@@ -16,17 +16,10 @@ from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Defines methods and attributes of the console"""
+
     prompt = "(hbnb) "
 
-    models = (
-        "Amenity",
-        "BaseModel",
-        "City",
-        "Place",
-        "Review",
-        "State",
-        "User"
-    )
+    models = ("Amenity", "BaseModel", "City", "Place", "Review", "State", "User")
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -127,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 obj = objects[obj_key]
                 for count in range(2, arg_len):
                     attr_name = arg[count]
-                    attr_value = arg[count+1]
+                    attr_value = arg[count + 1]
                     if '"' in attr_value:
                         attr_value = attr_value[1:-1]
 
@@ -142,9 +135,7 @@ class HBNBCommand(cmd.Cmd):
         print("** no instance found **")
 
     def do_count(self, arg):
-        """Prints the number of objects available based on the class name
-
-        """
+        """Prints the number of objects available based on the class name"""
         error = HBNBCommand.HBNBCommand_error_handler(arg)
 
         if error:
@@ -168,10 +159,10 @@ class HBNBCommand(cmd.Cmd):
                 .replace(", ", " ")
                 .replace("(", " ")
                 .replace(")", " ")
-                .replace("\"", "")
+                .replace('"', "")
                 .replace("{", "")
                 .replace("}", "")
-                .replace("\'", "")
+                .replace("'", "")
                 .replace(":", "")
             )
             arg_str = arg_str.split()
